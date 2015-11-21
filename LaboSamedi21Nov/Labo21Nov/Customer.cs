@@ -32,5 +32,9 @@ namespace Labo21Nov
             PostCode = pc;
             Remark = r;
         }
+        public Customer()
+        {
+
+        }
     }
 }

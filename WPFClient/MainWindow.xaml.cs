@@ -34,15 +34,15 @@ namespace WPFClient
 
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            Database.SetInitializer(new DropCreateDatabaseAlways<CompanyContext>());
-            _customer = new Customer(100.2, "Rue de glimes,3", "rue joephine rauscent", "Jodoigne", "Belgique", "abcd@hotmail.com", 1, "Ghislain", "1370", "A livrer");
+            _context = new CompanyContext();
+            _customer = _context.Customers.First(); //Il va chercher le premier customer de la bd
             Formulaire.DataContext = _customer;
-            throw new NotImplementedException("Voir énoncé");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException("Voir énoncé");
+            _customer.AccountBalance += (double) MontantAAjouterAuCompte.Value;
+            _context.SaveChanges();
         }
     }
 }
